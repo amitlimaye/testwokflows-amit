@@ -18,4 +18,16 @@ jobs:
     - name: Lint
       uses: golangci/golangci-lint-action@v6
     - name: Test
-      run: go test -v 
+      run: go test -v
+  upload:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: testworkflow
+        path: ./testworkflow
+                                                                                                        
